@@ -23,11 +23,12 @@
 ## Requirements
   - [Homebrew](https://brew.sh)
   - [React Native CLI](https://facebook.github.io/react-native/docs/getting-started.html#content)
-  - Node or NVM
+  - [Node v8.2.x](https://nodejs.org/en/)
   - [Watchman](https://facebook.github.io/watchman/)
   - [yarn](https://yarnpkg.com/en/)
-  - XCode 8.8* [Mac App Store](https://itunes.apple.com/us/app/xcode/id497799835?mt=12)
-  - XCode Command Line Tools
+  - Xcode 8.x via [Mac App Store](https://itunes.apple.com/us/app/xcode/id497799835?mt=12)
+    * Xcode Command Line Tools is also required
+
 
 ## Development
 
