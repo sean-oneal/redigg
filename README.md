@@ -9,8 +9,8 @@
 1. [Requirements](#requirements)
 1. [Development](#development)
     1. [Installing Dependencies](#installing-dependencies)
-    1. [Tasks](#tasks)
-    1. [Secrets](#secrets)
+    1. [Tasks](#arrow_up-installing-dependencies)
+    1. [Secrets](#closed_lock_with_key-secrets)
     1. [Tech Stack](#tech-stack)
     1. [Roadmap](#roadmap)
 
