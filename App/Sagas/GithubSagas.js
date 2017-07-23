@@ -12,7 +12,6 @@ export function * getRedditContent (api) {
     // do data conversion here if needed
     yield put(GithubActions.userSuccess(resData))
   } else {
-    console.log("ERRROR")
     yield put(GithubActions.userFailure(''))
   }
 }
