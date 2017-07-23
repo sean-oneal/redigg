@@ -2,17 +2,17 @@ import { call, put } from 'redux-saga/effects'
 import { path } from 'ramda'
 import GithubActions from '../Redux/GithubRedux'
 
-export function * getUserAvatar (api, action) {
-  const { username } = action
+export function * getRedditContent (api) {
+
   // make the call to the api
-  const response = yield call(api.getUser, username)
+  const response = yield call(api.getRoot)
 
   if (response.ok) {
-    const firstUser = path(['data', 'items'], response)[0]
-    const avatar = firstUser.avatar_url
+    const resData  = response.data.data.children
     // do data conversion here if needed
-    yield put(GithubActions.userSuccess(avatar))
+    yield put(GithubActions.userSuccess(resData))
   } else {
-    yield put(GithubActions.userFailure())
+    console.log("ERRROR")
+    yield put(GithubActions.userFailure(''))
   }
 }

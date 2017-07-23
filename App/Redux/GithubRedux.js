@@ -4,8 +4,8 @@ import Immutable from 'seamless-immutable'
 /* ------------- Types and Action Creators ------------- */
 
 const { Types, Creators } = createActions({
-  userRequest: ['username'],
-  userSuccess: ['avatar'],
+  userRequest: null,
+  userSuccess: ['contentList'],
   userFailure: null
 })
 
@@ -15,27 +15,28 @@ export default Creators
 /* ------------- Initial State ------------- */
 
 export const INITIAL_STATE = Immutable({
-  avatar: null,
+  contentList: null, // updated naming
   fetching: null,
   error: null,
-  username: null
+
 })
 
 /* ------------- Reducers ------------- */
 
-// request the avatar for a user
-export const request = (state, { username }) =>
-  state.merge({ fetching: true, username, avatar: null })
+// request the list from reddit
+export const request = (state, action) => // removed action
+  state.merge({ fetching: true })
 
-// successful avatar lookup
+// successful reddit lookup
 export const success = (state, action) => {
-  const { avatar } = action
-  return state.merge({ fetching: false, error: null, avatar })
+  // console.log(action, 'ACTION IN SUCCESSFUL REDUX SAGA >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
+
+  return state.merge({ contentList: action, fetching: false, error: null })
 }
 
 // failed to get the avatar
 export const failure = (state) =>
-  state.merge({ fetching: false, error: true, avatar: null })
+  state.merge({ fetching: false, error: true, contentList: null })
 
 /* ------------- Hookup Reducers To Types ------------- */
 

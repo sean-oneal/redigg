@@ -3,9 +3,10 @@ import { View, Text, TouchableOpacity, ListView, Image, Linking } from 'react-na
 import { connect } from 'react-redux'
 import Icon from 'react-native-vector-icons/FontAwesome'
 // For empty lists
-import AlertMessage from '../Components/AlertMessage'
-import DrawerButton from '../Components/DrawerButton'
-import RoundedButton from '../Components/RoundedButton'
+
+// import AlertMessage from '../Components/AlertMessage'
+// import DrawerButton from '../Components/DrawerButton'
+// import RoundedButton from '../Components/RoundedButton'
 
 // Styles
 import styles from './Styles/ContentListStyle'
@@ -22,8 +23,9 @@ class ContentList extends Component {
     * This is an array of objects with the properties you desire
     * Usually this should come from Redux mapStateToProps
     *************************************************************/
-    const dataObjects = require('../Fixtures/redditExampleData.json').data.children
+    // const dataObjects = require('../Fixtures/redditExampleData.json');
 
+    const dataObjects = [] || this.props.dataObjects
     /* ***********************************************************
     * STEP 2
     * Teach datasource how to detect if rows are different
@@ -50,39 +52,53 @@ class ContentList extends Component {
     return <MyCustomCell title={rowData.title} description={rowData.description} />
   *************************************************************/
   renderRow ({data}) {
-    return (
-      <View style={styles.row}>
-        <AlertMessage></AlertMessage>
-        <TouchableOpacity onPress={() => Linking.openURL(data.preview.images[0].source.url)}>
+      return (
+        <View key={data.id}style={styles.row}>
           <Image
             style={{width: 50, height: 50}}
             source={{uri: data.thumbnail}}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.col}>
+            />
+          <Text> {data.title} </Text>
           <Icon
-            style={styles.downIcon}
-            name='arrow-up'
-            size={20}>{' ' + data.ups}
-          </Icon>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.col} >
-          <Icon
-            style={styles.downIcon}
-            name='arrow-down'
-            size={20}>{' ' + data.downs}
-          </Icon>
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Text
-            style={styles.linkLabel}
-            onPress={() =>
-              Linking.openURL(data.url)}>
-            {data.title}
-          </Text>
-        </TouchableOpacity>
-      </View>
-    )
+             style={styles.downIcon}
+             name='arrow-up'
+             size={20}>{' ' + data.ups}
+           </Icon>
+        </View>
+      )
+    // return (
+    //   <View style={styles.row}>
+    //     <AlertMessage></AlertMessage>
+    //     <TouchableOpacity onPress={() => Linking.openURL(data.preview.images[0].source.url)}>
+    //       <Image
+    //         style={{width: 50, height: 50}}
+    //         source={{uri: data.thumbnail}}
+    //       />
+    //     </TouchableOpacity>
+    //     <TouchableOpacity style={styles.col}>
+    //       <Icon
+    //         style={styles.downIcon}
+    //         name='arrow-up'
+    //         size={20}>{' ' + data.ups}
+    //       </Icon>
+    //     </TouchableOpacity>
+    //     <TouchableOpacity style={styles.col} >
+    //       <Icon
+    //         style={styles.downIcon}
+    //         name='arrow-down'
+    //         size={20}>{' ' + data.downs}
+    //       </Icon>
+    //     </TouchableOpacity>
+    //     <TouchableOpacity>
+    //       <Text
+    //         style={styles.linkLabel}
+    //         onPress={() =>
+    //           Linking.openURL(data.url)}>
+    //         {data.title}
+    //       </Text>
+    //     </TouchableOpacity>
+    //   </View>
+    // )
   }
 
   /* ***********************************************************
@@ -103,6 +119,19 @@ class ContentList extends Component {
     }
   *************************************************************/
 
+  componentWillReceiveProps (newProps) {
+    console.log('NEW PROPS', newProps.dataObjects.contentList, '---------->>>>###>>$$$%%')
+    if (newProps) {
+      this.setState(prevState => ({
+        dataSource: prevState.dataSource.cloneWithRows(newProps.dataObjects.contentList)
+      }))
+    }
+  }
+  // componentDidMount() {
+  //   console.log('PRRRROOOOOPPPS DID MOUNT', this.props, 'MOUNTTTED')
+  //   const dataObjects = this.props.dataObjects;
+
+  // }
   // Used for friendly AlertMessage
   // returns true if the dataSource is empty
   noRowData () {
@@ -134,8 +163,9 @@ class ContentList extends Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log('STATE NEW STATE',state.github.contentList,'STAAATTTEEE===========================================>>>>>>>>>>..')
   return {
-    // ...redux state to props here
+    dataObjects: state.github.contentList
   }
 }
 
