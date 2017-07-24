@@ -6,14 +6,16 @@ import styles from './Styles/NavigationStyles'
 
 // Manifest of possible screens
 const PrimaryNav = StackNavigator({
+  Home: {screen: ContentList},
   ContentList: { screen: ContentList },
-  LaunchScreen: { screen: LaunchScreen }
+  Trending: { screen: ContentList },
+  // LaunchScreen: { screen: LaunchScreen }
 }, {
   // Default config for all screens
-  headerMode: 'none',
+  headerMode: 'float',
   initialRouteName: 'ContentList',
   navigationOptions: {
-    headerStyle: styles.header
+    headerStyle: styles.header,
   }
 })
 

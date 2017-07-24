@@ -3,6 +3,7 @@ import { Colors } from '../../Themes/'
 
 export default StyleSheet.create({
   header: {
-    backgroundColor: Colors.fire
+    backgroundColor: Colors.snow,
+    textDecorationColor: Colors.fire
   }
 })

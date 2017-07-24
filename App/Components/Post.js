@@ -6,34 +6,20 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import styles from './Styles/PostStyle'
 
 export default class Post extends Component {
-  // Prop type warnings
-  // static propTypes = {
-  //   author: PropTypes.string,
-  //  title: PropTypes.string,
-  //  link: PropTypes.string,
-  //  thumbnail: PropTypes.string,
-  //  ups: PropTypes.number
-  // }
+
   constructor(props) {
     super(props)
   }
-  // // Defaults for props
-  // static defaultProps = {
-  //   author: null,
-  //   title: null,
-  //   link: null,
-  //   thumbnail: '',
-  //   ups: 0,
-  // }
 
   render () {
     const { author, title, url, thumbnail, ups, images } = this.props;
+
     return (
       <View style={styles.container}>
 
         <View style={styles.row}>
           <TouchableOpacity
-            onPress={() => Linking.openURL(images[0].source.url)}>
+            onPress={() => console.log('pressed')}>
             <Image
               style={styles.image}
               source={{uri: thumbnail}}

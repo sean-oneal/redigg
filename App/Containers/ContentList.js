@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
+import * as ReactNavigation from 'react-navigation'
 import { View, Text, TouchableOpacity, ListView, Image, Linking, RefreshControl } from 'react-native';
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import GithubActions from '../Redux/GithubRedux';
-
+import NavActions from '../Redux/NavigationRedux';
 // For empty lists
 import AlertMessage from '../Components/AlertMessage';
 
 // Custom Components
 import Post from '../Components/Post';
-// import DrawerButton from '../Components/DrawerButton';
-// import RoundedButton from '../Components/RoundedButton'
+import RoundedButton from'../Components/RoundedButton';
 
 // Styles
 import styles from './Styles/ContentListStyle'
@@ -37,59 +37,11 @@ class ContentList extends Component {
     }
   }
 
-  // TODO: Refactor -> place inside of custom Post Component
   renderRow ({data}) {
       return (
-        // <View key={data.id}style={styles.row}>
-        //   <Image
-        //     style={{width: 50, height: 50}}
-        //     source={{uri: data.thumbnail}}
-        //     />
-        //   <Text> {data.title} </Text>
-        //   <Icon
-        //      style={styles.downIcon}
-        //      name='arrow-up'
-        //      size={20}>{' ' + data.ups}
-        //    </Icon>
-        // </View>
         <Post {...data} ></Post>
       )
     }
-
-    // return (
-    //   <View style={styles.row}>
-    //     <AlertMessage></AlertMessage>
-    //     <TouchableOpacity onPress={() => Linking.openURL(data.preview.images[0].source.url)}>
-    //       <Image
-    //         style={{width: 50, height: 50}}
-    //         source={{uri: data.thumbnail}}
-    //       />
-    //     </TouchableOpacity>
-    //     <TouchableOpacity style={styles.col}>
-    //       <Icon
-    //         style={styles.downIcon}
-    //         name='arrow-up'
-    //         size={20}>{' ' + data.ups}
-    //       </Icon>
-    //     </TouchableOpacity>
-    //     <TouchableOpacity style={styles.col} >
-    //       <Icon
-    //         style={styles.downIcon}
-    //         name='arrow-down'
-    //         size={20}>{' ' + data.downs}
-    //       </Icon>
-    //     </TouchableOpacity>
-    //     <TouchableOpacity>
-    //       <Text
-    //         style={styles.linkLabel}
-    //         onPress={() =>
-    //           Linking.openURL(data.url)}>
-    //         {data.title}
-    //       </Text>
-    //     </TouchableOpacity>
-    //   </View>
-    // )
-
 
   componentWillReceiveProps (newProps) {
     if (newProps) {
@@ -136,21 +88,26 @@ class ContentList extends Component {
             />
           }
         />
+        <RoundedButton text={'home'} onPress={this.props.navigation.reRoute}></RoundedButton>
       </View>
     )
   }
 }
 
 const mapStateToProps = (state) => {
+  console.log(state, "STATE>>>>>>>>>>>.")
   return {
-    dataObjects: state.github.contentList
+    dataObjects: state.github.contentList,
+    navState: state.nav
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchData: () => dispatch(GithubActions.userRequest())
-  }
+    fetchData: () => dispatch(GithubActions.userRequest()),
+    reRoute: () => dispatch(NavActions.navigate({ title: 'ContentList' }))
+    }
 }
+ContentList.navigationOptions = { title: 'Trending'}
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContentList)
