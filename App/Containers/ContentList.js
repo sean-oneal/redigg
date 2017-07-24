@@ -3,8 +3,9 @@ import * as ReactNavigation from 'react-navigation'
 import { View, Text, TouchableOpacity, ListView, Image, Linking, RefreshControl } from 'react-native';
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import GithubActions from '../Redux/GithubRedux';
+import RediggActions from '../Redux/RediggRedux';
 import NavActions from '../Redux/NavigationRedux';
+
 // For empty lists
 import AlertMessage from '../Components/AlertMessage';
 
@@ -13,7 +14,7 @@ import Post from '../Components/Post';
 import RoundedButton from'../Components/RoundedButton';
 
 // Styles
-import styles from './Styles/ContentListStyle'
+import styles from './Styles/ContentListStyle';
 
 class ContentList extends Component {
   state: {
@@ -23,12 +24,12 @@ class ContentList extends Component {
   constructor (props) {
     super(props)
 
-    const dataObjects = [] || this.props.dataObjects
+    const dataObjects = [] || this.props.dataObjects;
 
-    const rowHasChanged = (r1, r2) => r1 !== r2
+    const rowHasChanged = (r1, r2) => r1 !== r2;
 
     // DataSource configured
-    const ds = new ListView.DataSource({rowHasChanged})
+    const ds = new ListView.DataSource({rowHasChanged});
 
     // Datasource is always in state
     this.state = {
@@ -52,9 +53,10 @@ class ContentList extends Component {
     }
   }
 
+  // private function to refresh content on pull down
   _onRefresh = () => {
     this.setState({refreshing: true});
-    this.props.fetchData()
+    this.props.fetchData();
   }
 
   // Used for friendly AlertMessage
@@ -94,20 +96,19 @@ class ContentList extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  console.log(state, "STATE>>>>>>>>>>>.")
+const mapStateToProps = state => {
   return {
-    dataObjects: state.github.contentList,
+    dataObjects: state.redigg.contentList,
     navState: state.nav
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
-    fetchData: () => dispatch(GithubActions.userRequest()),
-    reRoute: () => dispatch(NavActions.navigate({ title: 'ContentList' }))
+    fetchData: () => dispatch(RediggActions.userRequest()),
+    reRoute: () => dispatch(NavActions.navigate({title: 'ContentList'}))
     }
 }
-ContentList.navigationOptions = { title: 'Trending'}
+ContentList.navigationOptions = {title: 'Redigg'};
 
-export default connect(mapStateToProps, mapDispatchToProps)(ContentList)
+export default connect(mapStateToProps, mapDispatchToProps)(ContentList);

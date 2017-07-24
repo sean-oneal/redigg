@@ -1,6 +1,6 @@
-import API from '../../App/Services/Api'
-import FixtureAPI from '../../App/Services/FixtureApi'
-import R from 'ramda'
+import API from '../../App/Services/Api';
+import FixtureAPI from '../../App/Services/FixtureApi';
+import R from 'ramda';
 
 test('All fixtures map to actual API', () => {
   const fixtureKeys = R.keys(FixtureAPI).sort()
@@ -21,20 +21,20 @@ test('FixtureAPI getRate returns the right file', () => {
   })
 })
 
-test('FixtureAPI getUser returns the right file for gantman', () => {
-  const expectedFile = require('../../App/Fixtures/gantman.json')
+test('FixtureAPI getUser returns the right file for reddit', () => {
+  const expectedFile = require('../../App/Fixtures/redditExampleData.json')
 
-  expect(FixtureAPI.getUser('GantMan')).toEqual({
+  expect(FixtureAPI.getUser()).toEqual({
     ok: true,
     data: expectedFile
   })
 })
 
-test('FixtureAPI getUser returns the right file for skellock as default', () => {
-  const expectedFile = require('../../App/Fixtures/skellock.json')
+// test('FixtureAPI getUser returns the right file for skellock as default', () => {
+//   const expectedFile = require('../../App/Fixtures/skellock.json')
 
-  expect(FixtureAPI.getUser('Whatever')).toEqual({
-    ok: true,
-    data: expectedFile
-  })
-})
+//   expect(FixtureAPI.getUser('Whatever')).toEqual({
+//     ok: true,
+//     data: expectedFile
+//   })
+// })

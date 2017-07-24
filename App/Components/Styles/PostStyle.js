@@ -3,12 +3,11 @@ import { ApplicationStyles, Metrics, Colors } from '../../Themes'
 
 export default StyleSheet.create({
   container: {
-    display: 'flex',
+
     flex: 1,
     padding: 10,
-    height: 'auto',
+    minHeight: 75,
     flexDirection: 'row',
-    flexWrap: 'wrap',
     alignItems: 'center',
     backgroundColor: Colors.snow,
     marginVertical: Metrics.smallMargin,
@@ -16,31 +15,30 @@ export default StyleSheet.create({
   },
   image: {
     marginLeft: 5,
-    height: 60,
-    width: 60,
+    height: 65,
+    width: 65,
     borderRadius: 5
   },
   row: {
+    flex: 1,
     alignSelf: 'center',
-    padding: 2,
+    padding: 5,
     backgroundColor: Colors.snow,
     marginVertical: Metrics.smallMargin,
-    justifyContent: 'center',
-    flexWrap: 'wrap'
+
+  },
+  textRow: {
+    flex: 3,
+
   },
   linkLabel: {
     padding: 5,
     fontWeight: 'bold',
-    alignSelf: 'center',
+    textAlign:'center',
+    alignSelf: 'flex-end',
     color: Colors.panther,
   },
-  boldLabel: {
-    fontWeight: 'bold',
-    alignSelf: 'center',
-    color: Colors.snow,
-    textAlign: 'center',
-    marginBottom: Metrics.smallMargin
-  },
+
   icon: {
     marginLeft: 20,
     padding: 2,
@@ -50,6 +48,5 @@ export default StyleSheet.create({
     padding: 5,
     fontWeight: 'bold',
     color: Colors.steel,
-    textAlign: 'center'
   }
 })

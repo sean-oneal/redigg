@@ -5,4 +5,3 @@ Application specific themes
 * Metrics
 * Colors
 
-etc.

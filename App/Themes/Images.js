@@ -22,4 +22,4 @@ const images = {
   closeButton: require('../Images/Icons/close-button.png')
 }
 
-export default images
+export default images;

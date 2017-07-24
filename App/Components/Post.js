@@ -1,36 +1,28 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { View, Text, TouchableOpacity, Linking, Image } from 'react-native'
+import { View, Text, TouchableOpacity, Linking, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-import styles from './Styles/PostStyle'
+import styles from './Styles/PostStyle';
 
 export default class Post extends Component {
-
   constructor(props) {
     super(props)
   }
-
   render () {
     const { author, title, url, thumbnail, ups, images } = this.props;
-
     return (
       <View style={styles.container}>
-
         <View style={styles.row}>
           <TouchableOpacity
-            onPress={() => console.log('pressed')}>
+            onPress={console.log(this.props.nav)}>
             <Image
               style={styles.image}
               source={{uri: thumbnail}}
             />
           </TouchableOpacity>
-            <TouchableOpacity>
-
-          </TouchableOpacity>
-          </View>
-
-          <View style={styles.row}>
+        </View>
+        <View style={styles.row}>
           <Icon style={styles.icon}
             name='arrow-up'
             size={11}>
@@ -40,13 +32,14 @@ export default class Post extends Component {
             name='arrow-down'
             size={11}>
           </Icon>
-
-        </View>
+      </View>
+      <View style={styles.textRow}>
         <Text
           style={styles.linkLabel}
           onPress={() =>
             Linking.openURL(url)}> {title}
         </Text>
+        </View>
     </View>
     )
   }

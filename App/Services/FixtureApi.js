@@ -3,6 +3,7 @@ export default {
   getRoot: () => {
     return {
       ok: true,
+      //Backup example reddit data
       data: require('../Fixtures/redditExampleData.json')
     }
   }

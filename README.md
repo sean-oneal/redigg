@@ -1,6 +1,7 @@
 #  redigg
+<img src="readme/screenshot.png" alt="Redigg ScreenShot" height=600 />
 
-> Reddit reimagined with React Native and Redux
+> Reddit clone reimagined with React Native and Redux
 
 ## Table of Contents
 
@@ -84,6 +85,9 @@ The `.env` file is ignored by git keeping those secrets out of your repo.
   - Enzyme
   - Jest
   - Lodash
+  - Ignite 2.0
+  - api-sauce
+  - redux-sauce
 
 ### Roadmap
 

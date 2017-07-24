@@ -1,15 +1,15 @@
-import { put, select } from 'redux-saga/effects'
-import GithubActions from '../Redux/GithubRedux'
-import { is } from 'ramda'
+import { put, select } from 'redux-saga/effects';
+import RediggActions from '../Redux/RediggRedux';
+import { is } from 'ramda';
 
 // exported to make available for tests
-export const selectContentList = (state) => state.github.contentList
+export const selectContentList = (state) => state.redigg.contentList
 
 // process STARTUP actions
 export function * startup (action) {
   if (__DEV__ && console.tron) {
     // straight-up string logging
-    console.tron.log('Hello, I\'m an example of how to log via Reactotron.')
+    console.tron.log('Hello, I\'m an example of how to log via Reactotron.');
 
     // logging an object for better clarity
     console.tron.log({
@@ -32,9 +32,9 @@ export function * startup (action) {
       }
     })
   }
-  const content = yield select(selectContentList)
+  const content = yield select(selectContentList);
   // only get if we don't have it yet
   if (!is(Object, content)) {
-    yield put(GithubActions.userRequest(selectContentList))
+    yield put(RediggActions.userRequest(selectContentList));
   }
 }
