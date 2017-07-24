@@ -10,7 +10,7 @@ export default class Post extends Component {
     super(props)
   }
   render () {
-    const { author, title, url, thumbnail, ups, images } = this.props;
+    const { author, title, url, thumbnail, ups, images, permalink } = this.props;
     return (
       <View style={styles.container}>
         <View style={styles.row}>
@@ -37,7 +37,7 @@ export default class Post extends Component {
         <Text
           style={styles.linkLabel}
           onPress={() =>
-            Linking.openURL(url)}> {title}
+            Linking.openURL('https://www.reddit.com' + permalink)}> {title}
         </Text>
         </View>
     </View>
