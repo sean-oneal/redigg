@@ -1,13 +1,15 @@
-import React, { Component } from 'react'
-import { View, Text, TouchableOpacity, ListView, Image, Linking, RefreshControl } from 'react-native'
-import { connect } from 'react-redux'
-import Icon from 'react-native-vector-icons/FontAwesome'
-import GithubActions from '../Redux/GithubRedux'
+import React, { Component } from 'react';
+import { View, Text, TouchableOpacity, ListView, Image, Linking, RefreshControl } from 'react-native';
+import { connect } from 'react-redux';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import GithubActions from '../Redux/GithubRedux';
 
 // For empty lists
+import AlertMessage from '../Components/AlertMessage';
 
-import AlertMessage from '../Components/AlertMessage'
-import DrawerButton from '../Components/DrawerButton'
+// Custom Components
+import Post from '../Components/Post';
+// import DrawerButton from '../Components/DrawerButton';
 // import RoundedButton from '../Components/RoundedButton'
 
 // Styles
@@ -38,19 +40,22 @@ class ContentList extends Component {
   // TODO: Refactor -> place inside of custom Post Component
   renderRow ({data}) {
       return (
-        <View key={data.id}style={styles.row}>
-          <Image
-            style={{width: 50, height: 50}}
-            source={{uri: data.thumbnail}}
-            />
-          <Text> {data.title} </Text>
-          <Icon
-             style={styles.downIcon}
-             name='arrow-up'
-             size={20}>{' ' + data.ups}
-           </Icon>
-        </View>
+        // <View key={data.id}style={styles.row}>
+        //   <Image
+        //     style={{width: 50, height: 50}}
+        //     source={{uri: data.thumbnail}}
+        //     />
+        //   <Text> {data.title} </Text>
+        //   <Icon
+        //      style={styles.downIcon}
+        //      name='arrow-up'
+        //      size={20}>{' ' + data.ups}
+        //    </Icon>
+        // </View>
+        <Post {...data} ></Post>
       )
+    }
+
     // return (
     //   <View style={styles.row}>
     //     <AlertMessage></AlertMessage>
@@ -84,7 +89,7 @@ class ContentList extends Component {
     //     </TouchableOpacity>
     //   </View>
     // )
-  }
+
 
   componentWillReceiveProps (newProps) {
     if (newProps) {
