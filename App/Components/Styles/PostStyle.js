@@ -1,52 +1,60 @@
 import { StyleSheet } from 'react-native'
-import { ApplicationStyles, Metrics, Colors } from '../../Themes'
+import { ApplicationStyles, Fonts, Metrics, Colors } from '../../Themes'
 
 export default StyleSheet.create({
   container: {
-
-    flex: 1,
-    padding: 10,
-    minHeight: 75,
+    display: 'flex',
+    flexDirection: 'wrap',
+    minHeight: 120,
+    width: 'auto',
     flexDirection: 'row',
-    alignItems: 'center',
     backgroundColor: Colors.snow,
-    marginVertical: Metrics.smallMargin,
-    justifyContent: 'space-between'
+    marginVertical: Metrics.smallMargin - 2,
+    marginTop: Metrics.smallMargin - 5,
   },
   image: {
-    marginLeft: 5,
+    // marginRight: 30,
     height: 75,
     width: 75,
     borderRadius: 5
   },
-  row: {
+  column: {
     flex: 1,
+    flexDirection: 'column',
     alignSelf: 'center',
-    padding: 5,
-    backgroundColor: Colors.snow,
-    marginVertical: Metrics.smallMargin,
-
+    justifyContent: 'center',
   },
-  textRow: {
+  textCol: {
     flex: 3,
-
+    flexDirection: 'column',
+    padding: 5,
+    alignSelf: 'center',
+    justifyContent: 'center',
   },
   linkLabel: {
-    padding: 5,
+    padding: 3,
+    fontSize: 14,
     fontWeight: 'bold',
-    textAlign:'center',
-    alignSelf: 'flex-end',
-    color: Colors.panther,
+    color: Colors.charcoal,
+    alignSelf: 'auto',
+    textAlign: 'auto'
   },
-
   icon: {
-    marginLeft: 20,
-    padding: 2,
+    padding: 5,
+    alignSelf: 'center',
+    justifyContent: 'center'
   },
   count: {
-    fontSize: 16,
-    padding: 5,
+    fontSize: 14,
     fontWeight: 'bold',
-    color: Colors.steel,
+    color: Colors.charcoal,
+    textAlign: 'center'
+  },
+  text: {
+    padding: 5,
+    fontSize: 10,
+    color: Colors.charcoal,
+    alignSelf: 'auto',
+    textAlign: 'auto'
   }
 })
