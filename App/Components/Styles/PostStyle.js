@@ -15,8 +15,8 @@ export default StyleSheet.create({
   },
   image: {
     marginLeft: 5,
-    height: 65,
-    width: 65,
+    height: 75,
+    width: 75,
     borderRadius: 5
   },
   row: {

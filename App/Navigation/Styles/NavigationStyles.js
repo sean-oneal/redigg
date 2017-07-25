@@ -3,6 +3,6 @@ import { Colors } from '../../Themes/';
 
 export default StyleSheet.create({
   header: {
-    backgroundColor: Colors.transparent,
-  }
+    backgroundColor: Colors.ricePaper
+    }
 })

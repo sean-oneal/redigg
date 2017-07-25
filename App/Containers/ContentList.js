@@ -75,7 +75,7 @@ class ContentList extends Component {
   render () {
     return (
       <View style={styles.container}>
-      <AlertMessage show={this.noRowData()}></AlertMessage>
+       <AlertMessage show={this.noRowData()}></AlertMessage>
         <ListView
           contentContainerStyle={styles.listContent}
           dataSource={this.state.dataSource}
@@ -90,7 +90,6 @@ class ContentList extends Component {
             />
           }
         />
-        <RoundedButton text={'home'} onPress={this.props.navigation.reRoute}></RoundedButton>
       </View>
     )
   }
@@ -106,9 +105,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchData: () => dispatch(RediggActions.userRequest()),
-    reRoute: () => dispatch(NavActions.navigate({title: 'ContentList'}))
+    route: () => dispatch(NavActions.navigate({screen: 'PostDetails'}))
     }
 }
-ContentList.navigationOptions = {title: 'Redigg'};
+ContentList.navigationOptions = {title: 'redigg', screen: 'ContentList'};
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContentList);

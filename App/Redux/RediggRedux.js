@@ -29,7 +29,6 @@ export const request = (state, action) => // removed action
 
 // successful reddit lookup
 export const success = (state, action) => {
-  // console.log(action, 'ACTION IN SUCCESSFUL REDUX SAGA >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
 
   return state.merge({ contentList: action, fetching: false, error: null });
 }

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { View, Text, TouchableOpacity, Linking, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-
+import NavActions from '../Redux/NavigationRedux';
 import styles from './Styles/PostStyle';
 
 export default class Post extends Component {

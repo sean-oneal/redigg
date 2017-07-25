@@ -4,27 +4,19 @@ import { ApplicationStyles, Metrics, Colors } from '../../Themes'
 export default StyleSheet.create({
   ...ApplicationStyles.screen,
   container: {
-    flex: 1,
-    backgroundColor: Colors.steel
+    backgroundColor: Colors.snow
   },
   row: {
     flex: 1,
-    backgroundColor: Colors.snow,
-    marginVertical: Metrics.smallMargin,
+    minHeight: 75,
+    backgroundColor: Colors.steel,
     justifyContent: 'center'
-  },
-  boldLabel: {
-    fontWeight: 'bold',
-    alignSelf: 'center',
-    color: Colors.snow,
-    textAlign: 'center',
-    marginBottom: Metrics.smallMargin
   },
   label: {
     textAlign: 'center',
-    color: Colors.snow
+    color: Colors.panther
   },
   listContent: {
-    marginTop: Metrics.baseMargin
+    marginTop: Metrics.smallMargin
   }
 })

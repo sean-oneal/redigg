@@ -22,7 +22,7 @@ const colors = {
   border: '#483F53',
   banner: '#5F3E63',
   text: '#CCCCCC',
-  headerText: '#E0D7E5'
+  // header: '#ffffff'
 }
 
 export default colors;
