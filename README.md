@@ -33,7 +33,7 @@
 
 ## Development
 
-* redigg React Native App
+* The application was developed as a native application for iOS and Android devices. The application features persistent local storage of post data.  Users can update the content by pulling down on the list
 
 ### :arrow_up: Installing Dependencies
 
